@@ -33,7 +33,6 @@ class Emprestimo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     usuario_id = db.Column(db.Integer, db.ForeignKey("usuario.id"))
     livro_id = db.Column(db.Integer, db.ForeignKey("livro.id"))
-    situacao = db.Column(db.String(20), nullable=False)
     data = db.Column(db.String(10), nullable=False)
     situacao = db.Column(db.String(30), default="Emprestado")
     livro = db.relationship("Livro")
