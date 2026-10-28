@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Biblioteca</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>📚 Sistema de Biblioteca</h1>
+        <p>Cadastro de livros, autores, leitores e empréstimos</p>
+    </header>
+
+    <main>
+        {% with mensagens = get_flashed_messages() %}
+            {% for mensagem in mensagens %}
+                <p class="mensagem">{{ mensagem }}</p>
+            {% endfor %}
+        {% endwith %}
+
+        <section>
+            <h2>Cadastrar autor</h2>
+            <form action="/autores" method="POST">
+                <input type="text" name="nome"
+                       placeholder="Nome do autor" required>
+                <button type="submit">Cadastrar autor</button>
+            </form>
+
+            <h3>Autores cadastrados</h3>
+            <ul>
+                {% for autor in autores %}
+                    <li>{{ autor.nome }}</li>
+                {% else %}
+                    <li>Nenhum autor cadastrado.</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section>
+            <h2>Cadastrar livro</h2>
+            <form action="/livros" method="POST">
+                <input type="text" name="titulo"
+                       placeholder="Título do livro" required>
+
+                <input type="number" name="ano"
+                       placeholder="Ano de publicação">
+
+                <select name="autor_id" required>
+                    <option value="">Selecione o autor</option>
+                    {% for autor in autores %}
+                        <option value="{{ autor.id }}">
+                            {{ autor.nome }}
+                        </option>
+                    {% endfor %}
+                </select>
+
+                <button type="submit">Cadastrar livro</button>
+            </form>
+
+            <h3>Livros disponíveis no cadastro</h3>
+            <ul>
+                {% for livro in livros %}
+                    <li>
+                        <strong>{{ livro.titulo }}</strong>
+                        ({{ livro.ano or "Ano não informado" }})
+                        — Autores:
+                        {% for autor in livro.autores %}
+                            {{ autor.nome }}{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+
+                        <form action="/livros/remover/{{ livro.id }}"
+                              method="POST" class="inline">
+                            <button type="submit">Remover</button>
+                        </form>
+                    </li>
+                {% else %}
+                    <li>Nenhum livro cadastrado.</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+     
+            </ul>
+        </section>
+    </main>
+</body>
+</html>
