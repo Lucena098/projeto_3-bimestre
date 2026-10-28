@@ -26,14 +26,16 @@ class Autor(db.Model):
 
 class Usuario(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    nome = db.column(db.string(100), nullable=False)
-    email = db.column(db.string(100), nullable=False, unique=True)
+    nome = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(100), nullable=False, unique=True)
 
-class emprestimo(db.Model):
-    id = db.column(db.integer, primary_key=True)
-    usuario_id = db.column(db.integer, db.foreignkey("usuario.id"))
-    livro_id = db.column(db.integer, db.foreignkey("livro.id"))
+class Emprestimo(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    usuario_id = db.Column(db.Integer, db.ForeignKey("usuario.id"))
+    livro_id = db.Column(db.Integer, db.ForeignKey("livro.id"))
+    situacao = db.Column(db.String(20), nullable=False)
+
+class Categoria(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(50), nullable=False, unique=True)
     
-
-
-
