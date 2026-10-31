@@ -1,0 +1,163 @@
+/* As configurações gerais do código */
+:root {
+    --fundo: #F3EBDD;
+    --texto: #514638;
+    --lilas: #A78BFA;
+    --secundario: #FAF6ED;
+    --borda: #D8CCB8;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: var(--fundo);
+    color: var(--texto);
+}
+
+* {
+    padding: 0;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+/* Os cabeçalhos do site */
+header {
+    background-color: var(--secundario);
+    border-bottom: 2px solid var(--lilas);
+    text-align: center;
+    padding: 35px 20px;
+}
+
+header p {
+    margin-top: 8px;
+    color: var(--texto);
+}
+
+header h1 {
+    font-size: 2rem;
+    color: var(--lilas);
+}
+
+/* O conteúdo principal do site */
+main {
+    margin: 30px auto;
+    padding: 0 20px;
+    max-width: 1000px;
+}
+
+/* As sessões do site */
+section {
+    margin-bottom: 25px;
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    background-color: var(--secundario);
+    padding: 25px;
+}
+
+h3 {
+    margin-top: 25px;
+}
+
+/* Os formulários do site */
+form {
+    margin-bottom: 15px;
+}
+
+h2, h3, h4 {
+    margin-bottom: 15px;
+    color: var(--lilas);
+}
+
+input:focus, select:focus {
+    outline: 2px solid var(--lilas);
+}
+
+input, select {
+    padding: 12px;
+    margin: 5px 3px 5px 0;
+    border-radius: 6px;
+    max-width: 100%;
+    background-color: var(--fundo);
+    color: var(--texto);
+    border: 1px solid var(--borda);
+}
+
+/* Os botões do site */
+button {
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 5px 0;
+    background-color: var(--lilas);
+    color: var(--texto);
+    border: none;
+    padding: 11px 16px;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+/* As listas do site */
+ul {
+    list-style: none;
+}
+
+li p {
+    margin-top: 8px;
+}
+
+li {
+    margin-bottom: 12px;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    background-color: var(--fundo);
+    padding: 15px;
+}
+
+/* Os links do site */
+a {
+    margin-left: 8px;
+    text-decoration: none;
+    color: var(--lilas);
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* As mensagens do site */
+.mensagem {
+    margin-bottom: 15px;
+    border-left: 4px solid var(--lilas);
+    border-radius: 5px;
+    background-color: var(--secundario);
+    color: var(--texto);
+    padding: 12px;
+}
+
+/* Os formulários na mesma linha do site */
+.inline {
+    display: inline;
+}
+
+/* A Responsividade do site */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 1.6rem;
+    }
+    section {
+        padding: 18px;
+    }
+        main {
+        padding: 0 12px;
+    }
+    button {
+        max-width: 100%;
+    }
+    input, select {
+        width: 100%;
+        margin: 5px 0;
+    }
+}
+

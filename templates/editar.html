@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo }}</title>
+</head>
+
+<body>
+    <h1>{{ titulo }}</h1>
+    {% if campo == "nome" %}
+        <form method="POST">
+            <input type="text" name="nome"
+                   value="{{ registro.nome }}" required>
+            {% if registro.email is defined %}
+                <input type="email" name="email"
+                       value="{{ registro.email }}" required>
+            {% endif %}
+            <button type="submit">Salvar as alterações</button>
+        </form>
+    {% endif %}
+    <a href="{{ url_for('index') }}">Voltar</a>
+</body>
+</html>
